@@ -1,0 +1,31 @@
+.feed{
+    flex: 0.7;
+    border-right: 1px solid #F2F2F2;
+    min-width: fit-content;
+    overflow-y: scroll;
+    padding-left: 120px;
+    
+}
+
+/* hide scroling for  */
+.feed::-webkit-scrollbar{
+    display: none;
+}
+/* Hide scrolling for IE , Edge and Firefox */
+.feed{
+     -ms-text-overflow-style: none; /*IE and edge */
+    scrollbar-width: none;  /*firefox*/
+}
+.feed_header{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid #F2F2F2;
+    padding: 15px 20px;
+}
+
+.feed_header > h2 {
+    font-size: 20px;
+    font-weight: 800;
+}
