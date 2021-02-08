@@ -2,21 +2,26 @@ const express = require('express');
 const app = express();
 var cors = require('cors');
 var bodyParser = require('body-parser');
-var fs = require('fs');
-var path = require('path');
-const port = 4000;
+// var fs = require('fs');
+// var path = require('path');
+const port = 1200;
 require('dotenv').config();
 var morgan = require('morgan')
 
+//Bring in the models
+require("./models/usermodel");
 
 //The route 
-// const itemRoute  = require('./routes/itemRoute');
+const userRoute =require('./routes/userRoute')
+const authRoute  = require('./routes/auth');
 
 //middleware
 app.use(cors())
 app.use(express.json()); 
 app.use(morgan('dev'));
-// app.use(itemRoute);
+
+app.use('/api', authRoute);
+app.use('/user', userRoute )
 
 
 const mongoose = require('mongoose')

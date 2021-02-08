@@ -1,35 +1,35 @@
 //the authontication route for regester page (login)
 const router = require("express").Router();
 //import the usermodel  use the schema to insert the data 
-const User = require('../models/User');
+const User = require('../models/usermodel');
 //for hashing the password...........
 const bcrypt = require('bcrypt');
 // use joi to validate the data inputs from user.............. 
 const Joi = require('@hapi/joi');
 //for the token
 const JWT = require('jsonwebtoken');
-const auth = require("./middleware");
+// const auth = require("./middleware");
 //the validation schema using joi :)
 const querySchema = Joi.object({
-  userName     : Joi.string().required(),
-  age          : Joi.string().required(),
+  username     : Joi.string().required(),
   email        : Joi.string().required().lowercase().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
-  role         : Joi.string().required(),
   password     : Joi.string().min(8).required(),
   passwordAgain: Joi.ref('password'),//to equal password
 })
+
+
 //we add async here cause we need sometime to submit the data here
 router.post("/register", async (req, res) => {
   //what I need to cheeck for the user registration:
     try {
-      let { userName, age, email, password, role } = req.body;
+      let { username ,email, password } = req.body;
       // validate
       //0- check if the user enter the filed 
       const{error}  = querySchema.validate(req.body);
       console.log(req.body)
       if(error){
           return res.status(403).json({msg :error.details[0].message})}
-      if ( !userName || !age||!email || !password || !role )
+      if ( !username ||!email || !password )
         return res.status(400).json({ msg: "Not all fields have been entered." });
      //1- The email is  alredy used
       const existingUser = await User.findOne({ email: email });
@@ -42,8 +42,6 @@ router.post("/register", async (req, res) => {
       const passwordHash = await bcrypt.hash(password, salt);
       const newUser = new User({
           userName,
-          age,
-          role,
           email,
           password: passwordHash,
       });
