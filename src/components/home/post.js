@@ -32,14 +32,20 @@ export default function Post({
                        <p> if you want to live a perfect life live it as achiled</p>
                    </div>
                </div>
-               <img classname="imag" src="https://i.pinimg.com/564x/d8/50/7d/d8507d0f79aef2cbf35c9d199d225fa6.jpg" alt="post"/>
+               <img classname="imag" src="https://i.pinimg.com/564x/8b/20/31/8b20314921424dd60c68da8be20b3d0e.jpg" alt="post"/> <br/><br/><br/>
+               <div className="post_footer_line"></div>
                <div className='post_footer'>
                <div className="like-line1"><ChatBubbleOutlineIcon fontSize="small"/>  </div>
                <div className="like-line2" ><RepeatIcon fontSize="small" /> </div>
                <div className="like-line3" ><FavoriteBorderIcon fontSize="small" />  </div>
                <div  className="like-line4"><PublishIcon fontSize="small" /> </div>
                </div>
+                <div className="comment_footer">
+               <Avatar src=""/>
+                <input placeholder="write a comment"/>
+               </div>
            </div>
+          
         </div>
     )
 }

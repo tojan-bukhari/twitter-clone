@@ -3,8 +3,8 @@
     border-right: 1px solid #F2F2F2;
     min-width: fit-content;
     overflow-y: scroll;
-    padding-left: 120px;
-    
+    /* padding-left: 120px; */
+    /* padding-top:100px; */
 }
 
 /* hide scroling for  */

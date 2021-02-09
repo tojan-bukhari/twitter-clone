@@ -13,10 +13,22 @@
   .post_body > img {
     border-radius: 8px;
   }
+  /* .post_footer_line {
+    position: absolute;
+    width: 705px;
+    height: 0px;
+    left: 202.6px;
+    top: 1491.72px;
+
+
+    border: 1px solid #F2F2F2;
+  } */
   .post_footer {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
+    padding-left: 90px;
+    padding-right: 210px;
   }
   
   .like-line2:hover {
@@ -52,3 +64,28 @@
   .post_avatar {
     padding: 20px;
   }
+
+  .comment_footer {
+    /* padding: 20px ; */
+    display:flex;
+    padding-left: 3px;
+    padding-right: 140px;
+    padding-top: 20px;
+}
+
+.comment_footer > input {
+    flex: 1;
+    margin-left: 20px;
+    font-size: 15px;
+    /* border: none; */
+    /* background: #FAFAFA; */
+    background: #FAFAFA;
+    border: 1px solid #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 8px;
+    /* background-color: rgb(235, 235, 235); */
+}
+
+.post_footer_line{
+  border: 1px solid #F2F2F2;
+}

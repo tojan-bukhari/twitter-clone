@@ -1,0 +1,38 @@
+.profile_side_bar {
+    position: absolute;
+    width: 304px;
+    height: 219.01px;
+    left: 184px;
+    top: 420px;
+    background: #f8f6f6;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    
+      
+     
+}
+
+.profile_side_bar_line1:hover {
+      background-color: #e8f5fe;
+        border-radius: 30px;
+        color: rgba(28, 162, 224, 0.89);
+        transition: color 100ms ease-out;
+}
+.profile_side_bar_line2:hover {
+    background-color: #e8f5fe;
+      border-radius: 30px;
+      color: rgba(28, 162, 224, 0.89);
+      transition: color 100ms ease-out;
+}
+.profile_side_bar_line3:hover {
+    background-color: #e8f5fe;
+      border-radius: 30px;
+      color: rgba(28, 162, 224, 0.89);
+      transition: color 100ms ease-out;
+}
+.profile_side_bar_line4:hover {
+    background-color: #e8f5fe;
+      border-radius: 30px;
+      color: rgba(28, 162, 224, 0.89);
+      transition: color 100ms ease-out;
+}
