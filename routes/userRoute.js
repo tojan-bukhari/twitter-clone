@@ -23,14 +23,14 @@ const User = require('../models/usermodel');
 //  .then(() => res.json('user added !'))  
 //  .catch(err => res.status(400).json('Error: ' + err));
 // });
-router.post('/', (req , res)=>{
-    try {
-        const newuser = new User(req.body);
-        newuser.save();
-        res.json(newuser)
-    }
-    catch(err){res.json("can't save");}    
-})
+// router.post('/', (req , res)=>{
+//     try {
+//         const newuser = new User(req.body);
+//         newuser.save();
+//         res.json(newuser)
+//     }
+//     catch(err){res.json("can't save");}    
+// })
 
 
 

@@ -1,4 +1,8 @@
 import { Form, Input, Button, Checkbox } from 'antd';
+import React , {useState }from 'react';
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
+
 const layout = {
   labelCol: {
     span: 8,
@@ -15,6 +19,9 @@ const tailLayout = {
 };
 
 export default function Signin (){
+  const history = useHistory();
+  const[email,setemail]       = useState()
+  const[password,setpassword] = useState()
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -22,6 +29,21 @@ export default function Signin (){
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
+  const submit = async (e)=>{
+    e.preventDefault();
+    try {
+    const loginuser={email,password}
+    console.log('this is the new user', loginuser)
+    const result = await axios.post('http://localhost:1200/api/login', loginuser)
+    console.log('fofo is lost',result.data.user.id)
+    localStorage.setItem("theToken", result.data.token);
+    localStorage.setItem("id", result.data.user.id);
+    history.push('/home')
+  } catch (error) {
+  }
+    // console.log(res.data.token)
+
+  }
 
   return (
       <div style={{
@@ -41,16 +63,16 @@ export default function Signin (){
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Username"
-        name="username"
+        label="Email"
+        name="Email"
         rules={[
           {
             required: true,
-            message: 'Please input your username!',
+            message: 'Please input your Email!',
           },
         ]}
       >
-        <Input />
+        <Input onChange={(e)=>{setemail(e.target.value)}}/>
       </Form.Item>
 
       <Form.Item
@@ -63,7 +85,7 @@ export default function Signin (){
           },
         ]}
       >
-        <Input.Password />
+        <Input.Password onChange={(e)=>{setpassword(e.target.value)}}/>
       </Form.Item>
 
       <Form.Item {...tailLayout} name="remember" valuePropName="checked">
@@ -71,7 +93,7 @@ export default function Signin (){
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button onClick={submit} type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>

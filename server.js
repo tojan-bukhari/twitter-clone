@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 var cors = require('cors');
 var bodyParser = require('body-parser');
+const jwt = require("jsonwebtoken");
 // var fs = require('fs');
 // var path = require('path');
 const port = 1200;

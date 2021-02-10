@@ -1,6 +1,6 @@
 import React from 'react';
 import Feed from './feed';
-import Header from './header';
+// import Header from './header';
 import Widgets from './widgets'
 import './home.css'
 export default function Home() {

@@ -1,4 +1,7 @@
 import { Form, Input, Button, Checkbox } from 'antd';
+import React , {useState }from 'react';
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 const layout = {
   labelCol: {
     span: 8,
@@ -15,6 +18,11 @@ const tailLayout = {
 };
 
 export default function Register (){
+  const history = useHistory();
+  const[username,setusername] = useState()
+  const[email,setemail]       = useState()
+  const[password,setpassword] = useState()
+
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -22,7 +30,17 @@ export default function Register (){
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
-
+  const submit = async (e) =>{
+    e.preventDefault();
+    
+    const newuser = { username , email , password}
+    console.log('this is the new user', newuser)
+    const res = axios.post('http://localhost:1200/api/register', newuser)
+    console.log('this is the response', res.data)
+    history.push('/login')
+  
+  
+  }
   return (
       <div style={{
         position: 'absolute',
@@ -50,7 +68,7 @@ export default function Register (){
           },
         ]}
       >
-        <Input />
+        <Input onChange={(e)=>{setusername(e.target.value)}} />
       </Form.Item>
 
       <Form.Item
@@ -63,7 +81,7 @@ export default function Register (){
           },
         ]}
       >
-        <Input />
+        <Input onChange={(e)=>{setemail(e.target.value)}}/>
       </Form.Item>
 
       <Form.Item
@@ -76,7 +94,7 @@ export default function Register (){
           },
         ]}
       >
-        <Input.Password />
+        <Input.Password onChange={(e)=>{setpassword(e.target.value)}}/>
       </Form.Item>
 
       <Form.Item {...tailLayout} name="remember" valuePropName="checked">
@@ -84,7 +102,7 @@ export default function Register (){
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button onClick={submit} type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>

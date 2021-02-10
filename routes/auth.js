@@ -41,7 +41,7 @@ router.post("/register", async (req, res) => {
       const salt = await bcrypt.genSalt();
       const passwordHash = await bcrypt.hash(password, salt);
       const newUser = new User({
-          userName,
+          username,
           email,
           password: passwordHash,
       });
@@ -60,7 +60,6 @@ router.post("/register", async (req, res) => {
     router.post("/login", async (req, res) => {
       try {
         const {email, password } = req.body;
-        console.log(req)
         // validate email && user
         if (!email || !password)
           return res.status(400).json({ msg: "Not all fields have been entered." });
@@ -74,12 +73,12 @@ router.post("/register", async (req, res) => {
         if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
     //create token 
         const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET);
+        console.log(process.env.JWT_SECRET)
         res.json({
           token,
           user: {
             id: user._id,
-            role:user.role,
-            name:user.userName
+            name:user.username
           },
         });
       } catch (err) {
