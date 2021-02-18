@@ -53,4 +53,17 @@ router.put("/:id",(req,res)=>{
      res.json(err);
     })
    })
+//////////////// TO UPDATE THE POSTS /////////
+router.put("/post/:id",(req,res)=>{
+    console.log('this is id',req.params.id)
+    console.log(req.body)
+    const promise = Post.findByIdAndUpdate(req.params.id,req.body);
+    promise.then((data)=>{
+     res.json(data);
+    }).catch((err)=>{
+     res.json(err);
+    })
+   })
 module.exports = router;
+
+

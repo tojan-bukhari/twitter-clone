@@ -42,14 +42,23 @@ export default function TweetBox() {
         const newpost={
             desc,
             url,
-            userId,
-            avatar:avatar,
-            name:name,
-            displayname:displayname}
+            userId}
         console.log('new post befor', newpost)
         const res = await axios.post('http://localhost:1200/user/post', newpost)
         console.log("result post ", res.data)
+        // console.log("postId ", )
+        var postId = res.data._id
         // console.log("result post config data ", res.config.data)
+        // //////////// TO UPDATE THE POST AUTOMATICKLY /////////
+        var updatpost = {
+            'avatar':avatar,
+            'name':name,
+            'displayname':displayname}
+        console.log('this is post ', updatpost)
+        const result = await axios.put("http://localhost:1200/user/post/"+ postId, updatpost);
+        console.log('this is post updated',result.data)
+
+
         document.getElementById("create_tweet").reset();
         setdesc("");
         setimg(null);
