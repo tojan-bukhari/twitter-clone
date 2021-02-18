@@ -1,0 +1,10 @@
+.home_sidebar {
+width: 200px;
+height: 900px;
+left: 40px;
+top: 420px;
+background: #f8f6f6;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+border-radius: 8px;
+padding-left: 15px;
+}

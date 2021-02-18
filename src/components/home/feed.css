@@ -1,9 +1,10 @@
 .feed{
-    flex: 0.7;
+    flex: 1;
     border-right: 1px solid #F2F2F2;
     min-width: fit-content;
     overflow-y: scroll;
-    /* padding-left: 120px; */
+    margin-left: 300px;
+    width:800px
     /* padding-top:100px; */
 }
 

@@ -6,6 +6,8 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
+import { Link } from 'react-router-dom';
+
 
 export default function Post() {
 
@@ -23,14 +25,6 @@ export default function Post() {
             ///////////to get the user /////////////
             const user = await axios.get('http://localhost:1200/user/'+userId);
             console.log('hellow user', user.data);
-            // setimg() to set the avatar 
-            // set the dispaly name 
-            // const cutEmail= user.data.email.split(/[@]/)
-            // console.log('cut', cutEmail)
-            // setdisplayname('@'+cutEmail[0])
-            // console.log('name',displayName)
-            //set name
-            // setname(user.data.username)
             setimg(user.data.img)
             /////////TO GET THE POSTS///////////
             const result = await axios.get("http://localhost:1200/user/post");
@@ -54,18 +48,19 @@ export default function Post() {
         {data!== undefined ? data.map((post,i)=>(
           <li key={i}>
             <div className="post_avatar">
-                <Avatar/>
-            </div> 
-            <div className="post_body">
-                <div className="post_header">
-                 <div className="post__headerText">
-                    <h3>
-                       {/* {name}{" "} */}
+               <Link to={'profile/'+ post.userId }><Avatar style={{marginTop:'15px'}}src={post.avatar}/></Link> 
+                <div className="post__headerText">
+                    <h3 style={{paddingtop:'70px'}} >
+                       {post.name}{" "}
                        <span className="post__headerSpecial">
-                        {/* {displayName !== undefined ? displayName : null} */}
+                        {post.displayname}
                       </span>
                     </h3>
                  </div>
+            </div> 
+            <div className="post_body">
+                <div className="post_header">
+                
                     <div className="post_headerDescription">
                         <p> {post.desc}</p>
                     </div>
@@ -103,3 +98,12 @@ export default function Post() {
 //  <div>
 //            
 //           </div>
+
+
+
+// 602e83601626b11bc07720a2
+
+
+
+// 6023f5d43843451f5889a3f0
+

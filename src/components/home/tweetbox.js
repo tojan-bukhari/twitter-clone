@@ -7,13 +7,14 @@ import {Form} from 'react-bootstrap'
 export default function TweetBox() {
 
     const[ desc, setdesc ]= useState(); // desc
-    const[ image ,  setimg ]= useState(null);   
+    const[ image ,  setimag ]= useState(null);   
     const [progress , setprogress] = useState();
     const[ url ,  seturl ]= useState(); // image
     const [avatar, setavatar]=useState(); // to set the avatar for each post
     const [name , setname]=useState(); // to set the name 
     const [displayname, setdisplayname]=useState();// to set display name
     const userId=localStorage.getItem('id')
+    const [img, setimg] = useState();
 
 
     useEffect(() => {
@@ -27,8 +28,9 @@ export default function TweetBox() {
             setdisplayname('@'+cutEmail[0])
             // console.log('name',displayName)
             //set name
-            setname(user.data.username)
-            setavatar(user.data.img)
+            setname(user.data.username);
+            setavatar(user.data.img);
+            setimg(user.data.img);
           
           } catch (error) {
             console.log(error, "oh nooooo");
@@ -61,8 +63,9 @@ export default function TweetBox() {
 
         document.getElementById("create_tweet").reset();
         setdesc("");
-        setimg(null);
+        setimag(null);
         seturl(undefined);
+
        } catch (error) {
         console.log(error, "oh nooooo");
       }
@@ -100,7 +103,7 @@ export default function TweetBox() {
         <div className="tweetbox">
            <form id='create_tweet'>
                <div className='tweetbox_input'>
-                   <Avatar src=""/>
+                   <Avatar src={img}/>
                    {/* avatar */}
                    {/* input */}
                    <input style={{margin:'30px', padding:"20px"}} placeholder="write tweet" onChange={(e)=>{setdesc(e.target.value)}}/>
@@ -115,7 +118,7 @@ export default function TweetBox() {
                 <div style={{paddingTop:'25px'}}> { image !== null ? <Button onClick={handleUpload}>uploade</Button> : null}</div>
                 <div style={{padding:"40px"}}>
                 <Form.Group className="upload_button">
-                    <Form.File id="exampleFormControlimage" onChange={(e)=>{setimg(e.target.files[0])}} />
+                    <Form.File id="exampleFormControlimage" onChange={(e)=>{setimag(e.target.files[0])}} />
                 </Form.Group> </div>
                </div>
            </form> 

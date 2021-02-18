@@ -11,9 +11,10 @@ import RepeatIcon from "@material-ui/icons/Repeat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
 import { Modal, Button } from 'antd';
+const queryString = require('query-string');
 
 
-export default function Profile() {
+export default function Profile(props) {
     const [img,setimg] = useState(null);
     const[proileimage,setprofileimage] = useState();
     const [name,setname]=useState();
@@ -22,12 +23,18 @@ export default function Profile() {
     const[progress,setprogress]=useState();
     const [displayName, setdisplayname]= useState();
     const [isModalVisible, setIsModalVisible] = useState(false);
-
-    const userId=localStorage.getItem('id')
+    // const userId = queryString.parse(location.search)localStorage.getItem('id')
+    const userId=123
     useEffect(() => {
         async function fetchData() {
           try {
               /////// TO GET THE USER
+            
+            // console.log('this id',queryString.parse(location.search))
+            console.log(props.location.pathname)
+            var path=props.location.pathname.split(/[/]/)
+            const userId=path[2]
+            console.log(userId)
             const user = await axios.get("http://localhost:1200/user/"+ userId);
             console.log('user profile',user.data)
             //// set name 
@@ -96,7 +103,7 @@ export default function Profile() {
             {/* bakground  */}
             <div className='info_bar'>
                 <div style={{dispaly:'flex'}}>
-                  <Avatar src={proileimage} height='70px' width='70px'/> 
+                 <Avatar src={proileimage} height='300px' width='1000px'/>
                  <Button type="primary" onClick={showModal}>
                     Edit  profile image
                 </Button>
@@ -109,11 +116,11 @@ export default function Profile() {
                     </div>
                 </Modal>
                   
-                    <p> fullstack-developer ready to get a jop </p>
+                
                     
                 </div>
                   <h3>{name}</h3>
-                
+                    <p> fullstack-developer ready to get a jop </p>
                 </div>
             </div>
             <div className="profile_posts">

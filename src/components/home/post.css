@@ -63,11 +63,14 @@
     color: gray;
   }  
   .post_avatar {
-    padding: 20px;
+    padding-left: 0px;
+    display: grid;
+    grid-template-columns: 60px 60px;
   }
 
   .comment_footer {
-    /* padding: 20px ; */
+    padding: 10px ;
+    margin-left: 0px;
     display:flex;
     padding-left: 3px;
     padding-right: 140px;
