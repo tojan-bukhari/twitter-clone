@@ -1,7 +1,7 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import React , {useState }from 'react';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
+import { useHistory , Link } from "react-router-dom";
 const layout = {
   labelCol: {
     span: 8,
@@ -100,11 +100,13 @@ export default function Register (){
       <Form.Item {...tailLayout} name="remember" valuePropName="checked">
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
-
+      
+      
       <Form.Item {...tailLayout}>
         <Button onClick={submit} type="primary" htmlType="submit">
           Submit
-        </Button>
+        </Button> <br/><br/>
+        <span style={{color:"black"}}>Alredy have an account?<Link to='/login' >Login</Link></span>
       </Form.Item>
     </Form></div>
   );

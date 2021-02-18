@@ -30,7 +30,8 @@ mongoose
     .connect(process.env.ATLAS_URI, {
         useNewUrlParser: true,
         useCreateIndex: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useFindAndModify: true
     })
     .then(() => {
         console.log('Connected to Mongo!');

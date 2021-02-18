@@ -11,8 +11,9 @@
 }
 
 .tweetbox_input {
-    padding: 20px ;
-    display:flex;
+    padding: 25px ;
+    display:grid;
+    grid-template-rows: 10% 40% 20%;
 }
 
 .tweetbox_input > input {
@@ -34,4 +35,23 @@
     height: 40px !important;
     margin-top: 20px !important;
     margin-left: auto !important;
+}
+
+.upload_button {
+    padding-left: 20px;
+}
+.upload_button:hover {
+    background-color: #59a6dd;
+    padding-left: 20px;
+    border-radius: 2px;
+    transition: color 100ms ease-out;
+  }
+.tweet_button_ubloaad_line {
+    padding:20px;
+    display:grid;
+    grid-template-columns: 30% 30% 40% ;
+}
+
+.iframe_style  {
+    padding-bottom: 0px;
 }

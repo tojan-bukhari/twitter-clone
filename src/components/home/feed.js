@@ -13,12 +13,6 @@ export default function Feed() {
             <TweetBox/>
             {/* postes */}
             <Post/>
-            <Post/>
-            <Post/>
-            <Post/>
-            <Post/>
-            <Post/>
-            <Post/>
             
            
         </div>
