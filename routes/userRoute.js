@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Post = require('../models/postmodel');
 const User = require('../models/usermodel');
-
+const requirelogin = require('../middileware/requirelogin')
 
 // POST REQ BY USER /////////////////////
 router.post('/post', (req,res)=>{
@@ -64,6 +64,77 @@ router.put("/post/:id",(req,res)=>{
      res.json(err);
     })
    })
+
+////////////// TO ADD LIKE POST ////////////
+// router.put('/like', requirelogin,(req,res)=>{
+//     console.log('fine')
+//     Post.findByIdAndUpdate(req.body.postId, {
+//         $push:{likes:req.user._id}
+//     },{
+//         new:true
+//     }).exec((err,result)=>{
+//         if(err){
+//             return res.status(422).json({error:err})
+//         }else{
+//             res.json(result)
+//         }
+//     }) // this will come with the req
+// })
+
+////////////// TO DISLIKE POST ////////////
+// router.put('/unlike', requirelogin,(req,res)=>{
+//     Post.findByIdAndUpdate(req.body.postId, {
+//         $push:{likes:req.user._id}
+//     },{
+//         new:true // so this will make mongo to update new recored for us instade of returning an old recored , why ? dont ask ! 
+//     }).exec((err,result)=>{
+//         if(err){
+//             return res.status(422).json({error:err})
+//         }else{
+//             res.json(result)
+//         }
+//     }) // this will come with the req
+// })
+
+//////////////// LIKE /////////////
+router.put("/like/:id",(req,res)=>{
+    console.log('this is post id',req.params.id)
+    console.log('this is the user',req.body)
+    const promise = Post.findByIdAndUpdate(req.params.id, {
+      $push:{likes:req.body.userId}
+     }).exec((err,result)=>{
+        if(err){
+          return res.status(422).json({error:err})
+          }else{
+         res.json(result)
+     }
+            })
+   })
+
+////////////// unlike ///////////////
+// router.put("/unlike/:id",(req,res)=>{
+//     console.log('this is post id',req.params.id)
+//     console.log('this is the user',req.body)
+//      Post.findByIdAndUpdate(req.params.id, {
+//       $pull:{likes:req.body.userId}
+//      }).exec((err,result)=>{
+//         if(err){
+//           return res.status(422).json({error:err})
+//           }else{
+//          res.json(result)
+//      }
+//             })
+//    })
+
+
 module.exports = router;
 
+
+
+
+// 602f9e9b7a9ce92b9430a358
+
+
+
+// 6023f5d43843451f5889a3f0
 

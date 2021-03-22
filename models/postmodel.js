@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema ({
     avatar:{Type:String},
     name:{Type:String},
     displayname:{Type:String},
+    likes:[{type: mongoose.Schema.Types.ObjectId, ref:'User'}],
     date: {
         type: Date,
         default: Date.now

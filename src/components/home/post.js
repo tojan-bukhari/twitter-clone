@@ -13,8 +13,6 @@ export default function Post() {
 
   // avatar 
   const [img,setimg]=useState();
-  // const[name,setname]=useState();
-  // const [displayName, setdisplayname]= useState();
   const userId = localStorage.getItem('id');
   const [userpostId, setuserpostid]=useState();
   const [data, setdata]= useState();
@@ -38,6 +36,32 @@ export default function Post() {
         } 
         fetchData();
       },[]);
+
+      ////////////////////// LIKE ///////
+      const handelikepost= async (postid)=>{
+      var newlike = {"userId": userId}
+      console.log('this is youser id', newlike)
+      const likepost = await axios.put("http://localhost:1200/user/"+ postid, newlike);
+      console.log('result like post',likepost.data)
+       
+      }
+        ////////////////////// UNLIKE ///////
+        // const handeunlikepost=(postid)=>{
+        //   fetch('/unlike',{
+        //     method:'put',
+        //     headers:{
+        //       // "Content-Type":"application/json",
+        //       "Authentiation":"bearer"+localStorage.getItem("theToken")
+        //     },
+        //     body:JSON.stringify({
+        //       postId:postid
+        //     })
+        //   }).then(res=>res.json())
+        //   .then(result=>{
+        //     console.log(result)
+        //   })
+         
+        // }
 
 
     return (
@@ -70,7 +94,7 @@ export default function Post() {
                 <div className='post_footer'>
                 <div className="like-line1"><ChatBubbleOutlineIcon fontSize="small"/>  </div>
                 <div className="like-line2" ><RepeatIcon fontSize="small" /> </div>
-                <div className="like-line3" ><FavoriteBorderIcon fontSize="small" />  </div>
+                <div className="like-line3" ><FavoriteBorderIcon onClick={handelikepost(post._id)} fontSize="small" />  </div>
                 <div  className="like-line4"><PublishIcon fontSize="small" /> </div>
                 </div>
                  <div className="comment_footer">
@@ -102,7 +126,7 @@ export default function Post() {
 
 
 // 602e83601626b11bc07720a2
-
+// 
 
 
 // 6023f5d43843451f5889a3f0

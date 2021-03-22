@@ -41,6 +41,9 @@
     
     color: rgb(250, 108, 167);
     transition: color 100ms ease-out;
+    background-color: #f0bbde;
+    border-radius: 60px;
+    padding: 5px;
   }
   .like-line4:hover {
    
